@@ -1,0 +1,10 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    timeout:
+        label: renatio.logout::lang.field.timeout
+        comment: renatio.logout::lang.field.timeout_comment
+        span: left
