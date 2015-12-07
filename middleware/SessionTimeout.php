@@ -5,10 +5,8 @@ namespace Renatio\Logout\Middleware;
 use Backend\Facades\BackendAuth;
 use Closure;
 use Illuminate\Session\Store;
-use Config;
 use Flash;
 use Renatio\Logout\Models\Settings;
-use Backend;
 
 /**
  * Class SessionTimeout
@@ -43,18 +41,13 @@ class SessionTimeout
      */
     public function handle($request, Closure $next)
     {
-        if (BackendAuth::check()) {
-            if ($this->sessionEnded()) {
-                $this->forceLogout();
+        $redirect = null;
 
-                return Backend::redirect('backend');
-            }
-            $this->setLastTimeActivity();
-        } else {
-            $this->forgetLastActivityTime();
+        if ($this->isBackendRequest($request)) {
+            $redirect = $this->handleBackendRequest();
         }
 
-        return $next($request);
+        return $redirect ?: $next($request);
     }
 
     /**
@@ -76,13 +69,15 @@ class SessionTimeout
     }
 
     /**
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     private function forceLogout()
     {
         $this->forgetLastActivityTime();
-        Flash::warning(trans('renatio.logout::lang.message.logout'));
         BackendAuth::logout();
+        Flash::warning(trans('renatio.logout::lang.message.logout'));
+
+        return redirect($this->backendUri());
     }
 
     /**
@@ -100,6 +95,38 @@ class SessionTimeout
     private function forgetLastActivityTime()
     {
         $this->session->forget('lastActivityTime');
+    }
+
+    /**
+     * @param $request
+     * @return bool
+     */
+    private function isBackendRequest($request)
+    {
+        return str_contains($request->url(), $this->backendUri());
+    }
+
+    /**
+     * @return mixed
+     */
+    private function backendUri()
+    {
+        return config('cms.backendUri');
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    private function handleBackendRequest()
+    {
+        if (BackendAuth::check()) {
+            if ($this->sessionEnded()) {
+                return $this->forceLogout();
+            }
+            $this->setLastTimeActivity();
+        } else {
+            $this->forgetLastActivityTime();
+        }
     }
 
 }
