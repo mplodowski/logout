@@ -1,3 +1,7 @@
+function finalTime(time) {
+    return new Date().getTime() + time * 60 * 1000;
+}
+
 $(function () {
 
     $('.mainmenu-nav').after('<div class="logout-counter"><span></span></div>');
@@ -5,18 +9,19 @@ $(function () {
     $.request('onGetSessionData', {
         success: function (data) {
 
-            if (data.lifetime != 0) {
+            var counter = $('.logout-counter span');
 
-                var lifetime = new Date().getTime() + data.lifetime * 60 * 1000;
+            counter.countdown(finalTime(data.lifetime))
+                .on('update.countdown', function (event) {
+                    $(this).html(event.strftime('%M:%S'));
+                })
+                .on('finish.countdown', function () {
+                    window.location.replace('/' + data.redirect);
+                });
 
-                $('.logout-counter span').countdown(lifetime)
-                    .on('update.countdown', function (event) {
-                        $(this).html(event.strftime('%M:%S'));
-                    })
-                    .on('finish.countdown', function () {
-                        window.location.replace('/' + data.redirect);
-                    });
-            }
+            $(document).on('ajaxSuccess', function () {
+                counter.countdown(finalTime(data.lifetime));
+            });
 
         }
     });
