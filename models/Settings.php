@@ -33,14 +33,14 @@ class Settings extends Model
      * @var array
      */
     public $attributeNames = [
-        'timeout' => 'renatio.logout::lang.field.timeout'
+        'lifetime' => 'renatio.logout::lang.field.lifetime'
     ];
 
     /**
      * @var array
      */
     public $rules = [
-        'timeout' => 'required|integer'
+        'lifetime' => 'required|min:1|integer'
     ];
 
     /**
@@ -48,7 +48,8 @@ class Settings extends Model
      */
     public function initSettingsData()
     {
-        $this->timeout = 900;
+        $this->lifetime = 15;
+        $this->show_counter = true;
     }
 
 }

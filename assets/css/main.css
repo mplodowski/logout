@@ -1,0 +1,16 @@
+.logout-counter {
+    float: right;
+    width: 35px;
+}
+
+.logout-counter span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    line-height: 60px;
+}
+
+@media (max-width: 769px) {
+    .logout-counter span {
+        line-height: 45px;
+    }
+}

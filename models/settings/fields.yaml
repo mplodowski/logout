@@ -4,7 +4,13 @@
 
 fields:
 
-    timeout:
-        label: renatio.logout::lang.field.timeout
-        comment: renatio.logout::lang.field.timeout_comment
+    show_counter:
+        label: renatio.logout::lang.field.show_counter
+        comment: renatio.logout::lang.field.show_counter_comment
+        type: switch
+        span: left
+
+    lifetime:
+        label: renatio.logout::lang.field.lifetime
+        comment: renatio.logout::lang.field.lifetime_comment
         span: left

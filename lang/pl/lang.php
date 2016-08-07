@@ -1,23 +1,25 @@
 <?php
 
 return [
-    'plugin'      => [
-        'name'        => 'Renatio Logout',
-        'description' => 'Automatycznie wyloguj uwierzytelnionego użytkownika po wygaśnięciu sesji.'
+    'plugin' => [
+        'name' => 'Renatio Logout',
+        'description' => 'Zarządzanie sesją użytkownika.'
     ],
-    'field'       => [
-        'timeout'         => 'Limit czasu w sekundach',
-        'timeout_comment' => 'Liczba sekund po której użytkownik zostanie automatycznie wylogowany z systemu.'
+    'field' => [
+        'lifetime' => 'Czas trwania sesji w minutach',
+        'lifetime_comment' => 'Liczba minut po której użytkownik zostanie automatycznie wylogowany z systemu.',
+        'show_counter' => 'Pokaż licznik',
+        'show_counter_comment' => 'Wyświetla licznik obok awatara użytkownika.',
     ],
-    'message'     => [
+    'message' => [
         'logout' => 'Zostałeś wylogowany!'
     ],
-    'settings'    => [
-        'label'       => 'Sesja użytkownika',
+    'settings' => [
+        'label' => 'Sesja użytkownika',
         'description' => 'Zarządzaj ustawieniami dla sesji użytkownika.'
     ],
     'permissions' => [
-        'tab'      => 'Sesja użytkownika',
+        'tab' => 'Sesja użytkownika',
         'settings' => 'Zarządzaj ustawieniami'
     ]
 ];
