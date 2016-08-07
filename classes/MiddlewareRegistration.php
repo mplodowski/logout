@@ -12,7 +12,7 @@ class MiddlewareRegistration
 {
 
     /**
-     * Register StartSession Middleware
+     * Register ValidateSession Middleware
      */
     public function register()
     {
