@@ -3,3 +3,6 @@
 2.0.0: !!! This is an important update that contains breaking changes.
 2.0.1: Add javascript counter.
 2.0.2: Reset counter after ajax request.
+2.0.3:
+    - Reset settings to default.
+    - reset_settings.php

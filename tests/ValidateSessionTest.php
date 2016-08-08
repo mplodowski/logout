@@ -62,7 +62,7 @@ class ValidateSessionTest extends PluginTestCase
 
         $response = $this->call('GET', 'backend');
 
-        $this->assertEquals('302', $response->getStatusCode());
+        $this->assertEquals(302, $response->getStatusCode());
         $this->assertEquals($this->baseUrl . '/backend/backend/auth', $response->getTargetUrl());
     }
 
