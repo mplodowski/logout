@@ -79,7 +79,7 @@ class ValidateSession
 
         Flash::warning(e(trans('renatio.logout::lang.message.logout')));
 
-        return Backend::redirect('backend/auth');
+        return Backend::redirectGuest('backend/auth');
     }
 
     /**

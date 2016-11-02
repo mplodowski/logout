@@ -3,6 +3,7 @@
 namespace Renatio\Logout\Classes;
 
 use Backend\Classes\Controller;
+use Backend\Facades\Backend;
 use Renatio\Logout\Models\Settings;
 
 /**
@@ -65,7 +66,7 @@ class Countdown
         $controller->addDynamicMethod('onGetSessionData', function () {
             return [
                 'lifetime' => $this->settings->lifetime,
-                'redirect' => config('cms.backendUri'),
+                'redirect' => Backend::url(),
             ];
         });
     }

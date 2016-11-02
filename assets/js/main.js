@@ -7,20 +7,19 @@ $(function () {
     $('.mainmenu-nav').after('<div class="logout-counter"><span></span></div>');
 
     $.request('onGetSessionData', {
-        success: function (data) {
-
+        success: function (session) {
             var counter = $('.logout-counter span');
 
-            counter.countdown(finalTime(data.lifetime))
-                .on('update.countdown', function (event) {
-                    $(this).html(event.strftime('%M:%S'));
+            counter.countdown(finalTime(session.lifetime))
+                .on('update.countdown', function (countdown) {
+                    $(this).html(countdown.strftime('%M:%S'));
                 })
                 .on('finish.countdown', function () {
-                    window.location.replace('/' + data.redirect);
+                    window.location.replace(session.redirect);
                 });
 
             $(document).on('ajaxSuccess', function () {
-                counter.countdown(finalTime(data.lifetime));
+                counter.countdown(finalTime(session.lifetime));
             });
 
         }
