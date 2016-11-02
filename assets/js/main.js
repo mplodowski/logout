@@ -19,6 +19,12 @@ $(function () {
                 });
 
             $(document).on('ajaxSuccess', function () {
+                var id = '#Form-field-Settings-lifetime';
+
+                if ($(id).length) {
+                    session.lifetime = $(id).val();
+                }
+
                 counter.countdown(finalTime(session.lifetime));
             });
 
