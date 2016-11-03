@@ -4,7 +4,7 @@ function finalTime(time) {
 
 $(function () {
 
-    $('.mainmenu-nav').after('<div class="logout-counter"><span></span></div>');
+    $('.mainmenu-preview').after('<li class="logout-counter"><span></span></li>');
 
     $.request('onGetSessionData', {
         success: function (session) {

@@ -1,10 +1,8 @@
 .logout-counter {
-    float: right;
-    width: 35px;
+    margin: 0 0 0 21px !important;
 }
 
 .logout-counter span {
-    color: rgba(255, 255, 255, 0.6);
     font-size: 13px;
     line-height: 60px;
 }
