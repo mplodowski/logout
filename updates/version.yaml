@@ -7,3 +7,4 @@
     - Reset settings to default.
     - reset_settings.php
 2.0.4: Fix minor issues.
+2.0.5: Fix UI issue for collapsed navs with countdown timer. Thanks to @LukeTowers.
