@@ -17,7 +17,7 @@ class BackendUserExtension
     /**
      * @return void
      */
-    public function make()
+    public function boot()
     {
         $this->extendModel();
 

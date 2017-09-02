@@ -41,9 +41,9 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        (new BackendUserExtension())->make();
+        (new BackendUserExtension)->boot();
 
-        (new Countdown)->make();
+        (new Countdown)->boot();
     }
 
     /**

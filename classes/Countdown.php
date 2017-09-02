@@ -28,7 +28,7 @@ class Countdown
     /**
      * @return void
      */
-    public function make()
+    public function boot()
     {
         if ($this->settings->show_counter) {
             Controller::extend(function ($controller) {
