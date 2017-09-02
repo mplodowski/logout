@@ -5,8 +5,7 @@ namespace Renatio\Logout\Middleware;
 use Backend\Facades\Backend;
 use Backend\Facades\BackendAuth;
 use Closure;
-use Flash;
-use Illuminate\Session\Store;
+use October\Rain\Support\Facades\Flash;
 use Renatio\Logout\Models\Settings;
 
 /**
@@ -17,21 +16,18 @@ class ValidateSession
 {
 
     /**
-     * @var Store
+     * @var
      */
-    protected $session;
+    protected $user;
 
     /**
      * @var
      */
     protected $settings;
 
-    /**
-     * @param Store $session
-     */
-    public function __construct(Store $session)
+    public function __construct($user = null)
     {
-        $this->session = $session;
+        $this->user = $user ?: BackendAuth::getUser();
         $this->settings = Settings::instance();
     }
 
@@ -42,8 +38,18 @@ class ValidateSession
      */
     public function handle($request, Closure $next)
     {
-        if ($this->isBackendRequest($request) && ! $this->isValidSession()) {
-            return $this->forceLogout();
+        if ( ! $this->user) {
+            return $next($request);
+        }
+
+        if ($this->user->isActive()) {
+            $this->user->updateLastActivity();
+        } else {
+            BackendAuth::logout();
+
+            if ($this->isBackendRequest($request)) {
+                return $this->forceLogout();
+            }
         }
 
         return $next($request);
@@ -59,35 +65,13 @@ class ValidateSession
     }
 
     /**
-     * @return bool
-     */
-    protected function isValidSession()
-    {
-        $bag = $this->session->getMetadataBag();
-
-        $lifetime = $this->getSessionLifetimeInSeconds();
-
-        return $bag && ($lifetime > time() - $bag->getLastUsed());
-    }
-
-    /**
      * @return mixed
      */
     protected function forceLogout()
     {
-        BackendAuth::logout();
-
-        Flash::warning(e(trans('renatio.logout::lang.message.logout')));
+        Flash::info(e(trans('renatio.logout::lang.message.logout')));
 
         return Backend::redirectGuest('backend/auth');
-    }
-
-    /**
-     * @return int
-     */
-    protected function getSessionLifetimeInSeconds()
-    {
-        return $this->settings->lifetime * 60 - 1;
     }
 
 }

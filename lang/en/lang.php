@@ -6,8 +6,8 @@ return [
         'description' => 'Manage user session.'
     ],
     'field' => [
-        'lifetime' => 'Session lifetime in minutes',
-        'lifetime_comment' => 'Number of minutes that you wish the session to be allowed to remain idle for it is expired.',
+        'lifetime' => 'Session lifetime in seconds',
+        'lifetime_comment' => 'Number of seconds that you wish the session to be allowed to remain idle for it is expired.',
         'show_counter' => 'Display counter',
         'show_counter_comment' => 'It will display counter next to user avatar.',
     ],

@@ -3,8 +3,9 @@
 2.0.0: !!! This is an important update that contains breaking changes.
 2.0.1: Add javascript counter.
 2.0.2: Reset counter after ajax request.
-2.0.3:
-    - Reset settings to default.
-    - reset_settings.php
+2.0.3: Reset settings to default.
 2.0.4: Fix minor issues.
 2.0.5: Fix UI issue for collapsed navs with countdown timer. Thanks to @LukeTowers.
+2.1.0:
+    - Add support for Laravel 5.5
+    - add_last_activity_column_to_backend_users.php

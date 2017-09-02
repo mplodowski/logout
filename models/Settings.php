@@ -2,7 +2,7 @@
 
 namespace Renatio\Logout\Models;
 
-use Model;
+use October\Rain\Database\Model;
 use October\Rain\Database\Traits\Validation;
 
 /**
@@ -32,15 +32,15 @@ class Settings extends Model
     /**
      * @var array
      */
-    public $attributeNames = [
-        'lifetime' => 'renatio.logout::lang.field.lifetime'
+    public $rules = [
+        'lifetime' => 'required|min:1|integer'
     ];
 
     /**
      * @var array
      */
-    public $rules = [
-        'lifetime' => 'required|min:1|integer'
+    public $attributeNames = [
+        'lifetime' => 'renatio.logout::lang.field.lifetime'
     ];
 
     /**
@@ -48,7 +48,9 @@ class Settings extends Model
      */
     public function initSettingsData()
     {
-        $this->lifetime = 15;
+        // Default lifetime in seconds
+        $this->lifetime = 900;
+
         $this->show_counter = true;
     }
 

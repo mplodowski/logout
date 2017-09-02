@@ -1,5 +1,7 @@
 .logout-counter {
-    margin: 0 0 0 21px !important;
+    margin: 0 !important;
+    min-width: 60px;
+    text-align: right;
 }
 
 .logout-counter span {

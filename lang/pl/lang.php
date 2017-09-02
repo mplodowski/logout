@@ -6,8 +6,8 @@ return [
         'description' => 'Zarządzanie sesją użytkownika.'
     ],
     'field' => [
-        'lifetime' => 'Czas trwania sesji w minutach',
-        'lifetime_comment' => 'Liczba minut po której użytkownik zostanie automatycznie wylogowany z systemu.',
+        'lifetime' => 'Czas trwania sesji w sekundach',
+        'lifetime_comment' => 'Liczba sekund po której użytkownik zostanie automatycznie wylogowany z systemu.',
         'show_counter' => 'Pokaż licznik',
         'show_counter_comment' => 'Wyświetla licznik obok awatara użytkownika.',
     ],

@@ -26,17 +26,9 @@ class Countdown
     }
 
     /**
-     * Initialize the counter
-     */
-    public function make()
-    {
-        $this->extendController();
-    }
-
-    /**
      * @return void
      */
-    protected function extendController()
+    public function make()
     {
         if ($this->settings->show_counter) {
             Controller::extend(function ($controller) {
@@ -63,12 +55,30 @@ class Countdown
      */
     protected function addDynamicMethods($controller)
     {
-        $controller->addDynamicMethod('onGetSessionData', function () {
+        $controller->addDynamicMethod('onGetLogoutSettings', function () {
             return [
                 'lifetime' => $this->settings->lifetime,
                 'redirect' => Backend::url(),
+                'format' => $this->getFormat(),
             ];
         });
+    }
+
+    /**
+     * @param null $lifetime
+     * @return string
+     */
+    public function getFormat($lifetime = null)
+    {
+        $lifetime = $lifetime ?: $this->settings->lifetime;
+
+        if ($lifetime >= 1 * 24 * 60 * 60) {
+            return '%-d day%!d %H:%M:%S';
+        } elseif ($lifetime >= 1 * 60 * 60) {
+            return '%H:%M:%S';
+        }
+
+        return '%M:%S';
     }
 
 }

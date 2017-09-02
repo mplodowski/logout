@@ -2,8 +2,10 @@
 
 namespace Renatio\Logout;
 
+use Illuminate\Routing\Router;
+use Renatio\Logout\Classes\BackendUserExtension;
 use Renatio\Logout\Classes\Countdown;
-use Renatio\Logout\Classes\MiddlewareRegistration;
+use Renatio\Logout\Middleware\ValidateSession;
 use Renatio\Logout\Models\Settings;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
@@ -14,6 +16,11 @@ use System\Classes\SettingsManager;
  */
 class Plugin extends PluginBase
 {
+
+    /**
+     * @var bool
+     */
+    public $elevated = true;
 
     /**
      * @return array
@@ -34,6 +41,8 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        (new BackendUserExtension())->make();
+
         (new Countdown)->make();
     }
 
@@ -42,7 +51,9 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        (new MiddlewareRegistration)->register();
+        $router = resolve(Router::class);
+
+        $router->pushMiddlewareToGroup('web', ValidateSession::class);
     }
 
     /**
