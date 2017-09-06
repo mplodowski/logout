@@ -1,0 +1,19 @@
+{
+  "name": "renatio/oc-logout-plugin",
+  "type": "october-plugin",
+  "description": "Automatically logout authenticated user after session timeout",
+  "homepage": "https://octobercms.com/plugin/renatio-logout",
+  "keywords": ["october", "octobercms", "session", "user"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michal Plodowski",
+      "email": "michal.plodowski@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "composer/installers": "~1.0"
+  },
+  "minimum-stability": "dev"
+}
