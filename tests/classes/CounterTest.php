@@ -4,14 +4,14 @@ namespace Renatio\Logout\Tests\Classes;
 
 use Backend\Classes\Controller;
 use PluginTestCase;
-use Renatio\Logout\Classes\Countdown;
+use Renatio\Logout\Classes\Counter;
 use System\Classes\PluginManager;
 
 /**
- * Class CountdownTest
+ * Class CounterTest
  * @package Renatio\Logout\Tests\Classes
  */
-class CountdownTest extends PluginTestCase
+class CounterTest extends PluginTestCase
 {
 
     /**
@@ -31,21 +31,21 @@ class CountdownTest extends PluginTestCase
     }
 
     /** @test */
-    public function it_returns_format_for_countdown_for_given_lifetime()
+    public function it_returns_format_for_counter_for_given_lifetime()
     {
-        $countdown = new Countdown;
+        $counter = new Counter;
 
         // 1 day in seconds
         $lifetime = 1 * 24 * 60 * 60;
-        $this->assertEquals('%-d day%!d %H:%M:%S', $countdown->getFormat($lifetime));
+        $this->assertEquals('%-d day%!d %H:%M:%S', $counter->getFormat($lifetime));
 
         // 1 hour in seconds
         $lifetime = 1 * 60 * 60;
-        $this->assertEquals('%H:%M:%S', $countdown->getFormat($lifetime));
+        $this->assertEquals('%H:%M:%S', $counter->getFormat($lifetime));
 
         // 15 minutes
         $lifetime = 15 * 60;
-        $this->assertEquals('%M:%S', $countdown->getFormat($lifetime));
+        $this->assertEquals('%M:%S', $counter->getFormat($lifetime));
     }
 
 }

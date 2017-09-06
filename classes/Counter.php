@@ -7,10 +7,10 @@ use Backend\Facades\Backend;
 use Renatio\Logout\Models\Settings;
 
 /**
- * Class Countdown
+ * Class Counter
  * @package Renatio\Logout\Classes
  */
-class Countdown
+class Counter
 {
 
     const ASSETS_PATH = '/plugins/renatio/logout/assets/';

@@ -4,7 +4,7 @@ namespace Renatio\Logout;
 
 use Illuminate\Routing\Router;
 use Renatio\Logout\Classes\BackendUserExtension;
-use Renatio\Logout\Classes\Countdown;
+use Renatio\Logout\Classes\Counter;
 use Renatio\Logout\Middleware\ValidateSession;
 use Renatio\Logout\Models\Settings;
 use System\Classes\PluginBase;
@@ -43,7 +43,7 @@ class Plugin extends PluginBase
     {
         (new BackendUserExtension)->boot();
 
-        (new Countdown)->boot();
+        (new Counter)->boot();
     }
 
     /**
