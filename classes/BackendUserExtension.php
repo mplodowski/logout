@@ -5,6 +5,7 @@ namespace Renatio\Logout\Classes;
 use Backend\Models\User;
 use DateTime;
 use Illuminate\Support\Facades\Event;
+use October\Rain\Support\Facades\Schema;
 use Renatio\Logout\Models\Settings;
 
 /**
@@ -52,6 +53,10 @@ class BackendUserExtension
      */
     protected function updateLastActivityAfterLogin()
     {
+        if ( ! Schema::hasColumn('backend_users', 'last_activity')) {
+            return;
+        }
+
         Event::listen('backend.user.login', function ($user) {
             $user->updateLastActivity();
         });

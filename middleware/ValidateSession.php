@@ -6,6 +6,7 @@ use Backend\Facades\Backend;
 use Backend\Facades\BackendAuth;
 use Closure;
 use October\Rain\Support\Facades\Flash;
+use October\Rain\Support\Facades\Schema;
 use Renatio\Logout\Models\Settings;
 
 /**
@@ -38,6 +39,10 @@ class ValidateSession
      */
     public function handle($request, Closure $next)
     {
+        if ( ! Schema::hasColumn('backend_users', 'last_activity')) {
+            return $next($request);
+        }
+
         if ( ! $this->user) {
             return $next($request);
         }
