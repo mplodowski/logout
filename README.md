@@ -12,8 +12,8 @@ Automatically sign out authenticated backend user after specified time.
 
 There are couple ways to install this plugin.
 
-1. Use OctoberCms [Marketplace](http://octobercms.com/help/site/marketplace) and __Add to project__ button. 
-2. Use OctoberCms backend area *Settings > System > Updates & Plugins > Install Plugins* and type __Renatio.Logout__.
+1. Use October [Marketplace](http://octobercms.com/help/site/marketplace) and __Add to project__ button. 
+2. Use October backend area *Settings > System > Updates & Plugins > Install Plugins* and type __Renatio.Logout__.
 3. Use `php artisan plugin:install Renatio.Logout` command.
 4. Use `composer require renatio/logout-plugin` in project root. When you use this option you must run `php artisan october:up` after installation.
 
