@@ -1,5 +1,5 @@
 {
-  "name": "renatio/oc-logout-plugin",
+  "name": "renatio/logout-plugin",
   "type": "october-plugin",
   "description": "Automatically logout authenticated user after session timeout",
   "homepage": "https://octobercms.com/plugin/renatio-logout",
