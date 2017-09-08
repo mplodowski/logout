@@ -3,7 +3,7 @@
   "type": "october-plugin",
   "description": "Automatically logout authenticated user after session timeout",
   "homepage": "https://octobercms.com/plugin/renatio-logout",
-  "keywords": ["october", "octobercms", "session", "user"],
+  "keywords": ["octobercms-plugin", "octobercms", "php", "laravel", "user", "logout"],
   "license": "MIT",
   "authors": [
     {

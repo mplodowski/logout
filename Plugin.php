@@ -32,7 +32,7 @@ class Plugin extends PluginBase
             'description' => 'renatio.logout::lang.plugin.description',
             'author' => 'Renatio',
             'icon' => 'icon-power-off',
-            'homepage' => 'https://renatio.com',
+            'homepage' => 'https://octobercms.com/plugin/renatio-logout',
         ];
     }
 

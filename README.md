@@ -34,4 +34,5 @@ Please use [GitHub Issues Page](https://github.com/mplodowski/logout-plugin/issu
 > Reviews should not be used for getting support or reporting bugs, if you need support please use the Plugin support link.
 
 ## Like this plugin?
+
 If you like this plugin, give this plugin a Like or Make donation with [PayPal](https://www.paypal.me/mplodowski).
