@@ -8,6 +8,10 @@ Automatically sign out authenticated backend user after specified time.
 * Force sign out backend user after specified time
 * Counter
 
+## Requirements
+
+> Plugin requires OctoberCMS build 420+ with Laravel 5.5 and PHP >=7.0.
+
 ## Installation
 
 There are couple ways to install this plugin.
