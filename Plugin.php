@@ -3,6 +3,7 @@
 namespace Renatio\Logout;
 
 use Illuminate\Routing\Router;
+use October\Rain\Support\Facades\Schema;
 use Renatio\Logout\Classes\BackendUserExtension;
 use Renatio\Logout\Classes\Counter;
 use Renatio\Logout\Middleware\ValidateSession;
@@ -41,19 +42,14 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        (new BackendUserExtension)->boot();
+        if (Schema::hasColumn('backend_users', 'last_activity')) {
+            (new BackendUserExtension)->boot();
 
-        (new Counter)->boot();
-    }
+            (new Counter)->boot();
 
-    /**
-     * @return void
-     */
-    public function register()
-    {
-        $router = resolve(Router::class);
-
-        $router->pushMiddlewareToGroup('web', ValidateSession::class);
+            $router = resolve(Router::class);
+            $router->pushMiddlewareToGroup('web', ValidateSession::class);
+        }
     }
 
     /**

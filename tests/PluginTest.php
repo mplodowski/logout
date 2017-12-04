@@ -21,7 +21,7 @@ class PluginTest extends PluginTestCase
     {
         parent::setUp();
 
-        PluginManager::instance()->registerAll(true);
+        PluginManager::instance()->bootAll(true);
     }
 
     /** @test */
